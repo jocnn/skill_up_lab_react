@@ -23,18 +23,16 @@ const Login = () => {
       return
     }
 
-    try {
-      axios
-        .post('http://challenge-react.alkemy.org', { email, password })
-        .then(res => {
-          toast.success('Login success')
-          console.log(res.data.token)
-        })
-      //toast.error('Datos no validos')
-    } catch (error) {
-      console.log(error)
-      toast.error('Login error')
-    }
+    axios
+      .post('http://challenge-react.alkemy.org', { email, password })
+      .then(res => {
+        toast.success('Login success')
+        localStorage.setItem('token', res.data.token)
+      })
+      .catch(function(err){
+        console.log(err)
+        toast.error('Datos no validos')
+      })
 
   }
 
