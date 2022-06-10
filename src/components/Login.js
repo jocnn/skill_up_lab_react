@@ -1,4 +1,6 @@
 import { useState } from "react"
+import axios from 'axios'
+import { toast } from 'react-toastify';
 
 const Login = () => {
 
@@ -13,12 +15,27 @@ const Login = () => {
 
     if ([email, password].includes('')) {
       console.log('Todos los campos son obligatorios')
+      toast.warning('Todos los campos son obligatorios')
       return
     }
     if (email !== '' && !regexEmail.test(email)) {
-      console.log('Debe ingresar un email válido')
+      toast.warning('Debe ingresar un email válido')
       return
     }
+
+    try {
+      axios
+        .post('http://challenge-react.alkemy.org', { email, password })
+        .then(res => {
+          toast.success('Login success')
+          console.log(res.data.token)
+        })
+      //toast.error('Datos no validos')
+    } catch (error) {
+      console.log(error)
+      toast.error('Login error')
+    }
+
   }
 
   return (
