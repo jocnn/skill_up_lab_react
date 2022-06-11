@@ -1,11 +1,14 @@
 import { useState } from "react"
 import axios from 'axios'
 import { toast } from 'react-toastify';
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
 
   const [ email, setEmail ] = useState('')
   const [ password, setPassword ] = useState('')
+
+  const navigate = useNavigate()
 
   // eslint-disable-next-line no-useless-escape
   const regexEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -33,6 +36,10 @@ const Login = () => {
         console.log(err)
         toast.error('Datos no validos')
       })
+
+    setTimeout(() => {
+      navigate('/listado')
+    }, 4000);
 
   }
 
