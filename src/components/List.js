@@ -25,8 +25,6 @@ const List = () => {
     consultandoAPI()
   }, [])
 
-  console.log(moviesList)
-
   return (
     <>
       {
