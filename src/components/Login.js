@@ -1,12 +1,14 @@
 import { useState } from "react"
 import axios from 'axios'
 import { toast } from 'react-toastify';
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const Login = () => {
 
   const [ email, setEmail ] = useState('')
   const [ password, setPassword ] = useState('')
+
+  const token = localStorage.getItem('token')
 
   const navigate = useNavigate()
 
@@ -45,34 +47,41 @@ const Login = () => {
 
   return (
     <>
-      <h2>Formulario de Login</h2>
-      <form
-        onSubmit={handleSubmit}
-      >
-        <label htmlFor="email">
-          Correo Electrónico
-          <input
-            name="email"
-            autoComplete="email"
-            type="email" 
-            value={email}
-            onChange={ e => setEmail(e.target.value) }
-          />
-        </label>
-        <label htmlFor="password">
-          Contraseña
-          <input 
-            name="password" 
-            autoComplete="current-password" 
-            type="password" 
-            value={password}
-            onChange={ e => setPassword(e.target.value) }
-          />
-        </label>
-        <input 
-          type="submit" 
-          value="Ingresar" />
-      </form>
+      {
+        token ? <Navigate to={'/listado'} /> :
+        (
+          <>
+            <h2>Formulario de Login</h2>
+            <form
+              onSubmit={handleSubmit}
+            >
+              <label htmlFor="email">
+                Correo Electrónico
+                <input
+                  name="email"
+                  autoComplete="email"
+                  type="email" 
+                  value={email}
+                  onChange={ e => setEmail(e.target.value) }
+                />
+              </label>
+              <label htmlFor="password">
+                Contraseña
+                <input 
+                  name="password" 
+                  autoComplete="current-password" 
+                  type="password" 
+                  value={password}
+                  onChange={ e => setPassword(e.target.value) }
+                />
+              </label>
+              <input 
+                type="submit" 
+                value="Ingresar" />
+            </form>
+          </>
+        ) 
+      }
     </>
   )
 }
