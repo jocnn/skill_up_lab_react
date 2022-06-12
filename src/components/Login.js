@@ -8,7 +8,7 @@ const Login = () => {
   const [ email, setEmail ] = useState('')
   const [ password, setPassword ] = useState('')
 
-  const token = localStorage.getItem('token')
+  const token = sessionStorage.getItem('token')
 
   const navigate = useNavigate()
 
@@ -32,7 +32,7 @@ const Login = () => {
       .post('http://challenge-react.alkemy.org', { email, password })
       .then(res => {
         toast.success('Login success')
-        localStorage.setItem('token', res.data.token)
+        sessionStorage.setItem('token', res.data.token)
       })
       .catch(function(err){
         console.log(err)

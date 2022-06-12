@@ -8,7 +8,7 @@ import Movie from "./Movie";
 const List = () => {
 
   const [ moviesList, setMoviesList ] = useState([])
-  const token = localStorage.getItem('token')
+  const token = sessionStorage.getItem('token')
 
   useEffect(() => {
     const consultandoAPI = () => {
