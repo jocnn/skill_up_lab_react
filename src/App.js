@@ -7,6 +7,7 @@ import Layout from "./components/Layout";
 import Login from "./components/Login";
 import List from "./components/List";
 import Contact from "./components/Contact";
+import DetailMovie from "./components/DetailMovie";
 
 function App() {
   return (
@@ -15,8 +16,9 @@ function App() {
         <Route>
           <Route path='/' >
             <Route index path='/' element={ <Login /> } />
-            <Route index path='/listado' element={ <List /> } />
-            <Route index path='/contacto' element={ <Contact /> } />
+            <Route path='/listado' element={ <List /> } />
+            <Route path='/contacto' element={ <Contact /> } />
+            <Route path='/detalle' element={ <DetailMovie /> } />
           </Route>
         </Route>
       </Routes>
