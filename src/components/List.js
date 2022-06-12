@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Link, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
+import { toast } from 'react-toastify';
+
+import Movie from "./Movie";
 
 const List = () => {
 
@@ -14,6 +17,9 @@ const List = () => {
           const apiData = response.data
           setMoviesList(apiData.results)
         })
+        .catch( err => {
+          toast.error('Hubo un error, intentalo nuevamente')
+        })
     }
 
     consultandoAPI()
@@ -26,16 +32,15 @@ const List = () => {
       {
         !token ? <Navigate to={'/'} /> : (
           <div className="row">
-            <div className="col-3">
-              <div className="card">
-                <img src="..." className="card-img-top" alt="..." />
-                <div className="card-body">
-                  <h5 className="card-title">Card title</h5>
-                  <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <Link to="/" className="btn btn-primary">Go somewhere</Link>
-                </div>
-              </div>
-            </div>
+            {
+              moviesList.map( movie => {
+                return (
+                  <Movie 
+                    key={movie.id} 
+                    movie={movie} />
+                )
+              })
+            }
           </div>
         )
       }
