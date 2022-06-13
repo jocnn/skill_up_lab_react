@@ -1,10 +1,12 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 
 const Search = () => {
 
   const [ search, setSearch ] = useState('')
+  const navigate = useNavigate()
 
   const handleChangeSearch = e => {
     setSearch(e.target.value)
@@ -21,9 +23,9 @@ const Search = () => {
       return
     }
 
+    navigate(`/resultados?keyboard=${search}`)
+    setSearch('')
 
-    console.log(search)
-    console.log('Iniciando busqueda...')
   }
 
   return (
