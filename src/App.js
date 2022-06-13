@@ -8,6 +8,7 @@ import Login from "./components/Login";
 import List from "./components/List";
 import Contact from "./components/Contact";
 import DetailMovie from "./components/DetailMovie";
+import Results from "./components/Results";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route index path='/' element={ <Login /> } />
             <Route path='/listado' element={ <List /> } />
             <Route path='/contacto' element={ <Contact /> } />
+            <Route path='/resultados' element={ <Results /> } />
             <Route path='/detalle/:movieID' element={ <DetailMovie /> } />
           </Route>
         </Route>
