@@ -50,36 +50,47 @@ const Login = () => {
       {
         token ? <Navigate to={'/listado'} /> :
         (
-          <>
-            <h2>Formulario de Login</h2>
-            <form
-              onSubmit={handleSubmit}
-            >
-              <label htmlFor="email">
-                Correo Electrónico
-                <input
-                  name="email"
-                  autoComplete="email"
-                  type="email" 
-                  value={email}
-                  onChange={ e => setEmail(e.target.value) }
-                />
-              </label>
-              <label htmlFor="password">
-                Contraseña
+          <div className="row">
+            <div className="col-6 offset-3">
+              <h2>Formulario de Login</h2>
+              <form
+                onSubmit={handleSubmit}
+              >
+                <label 
+                  className="form-label d-block mt-2"
+                  htmlFor="email"
+                >
+                  <span>Correo Electrónico</span>
+                  <input
+                    className="form-control"
+                    name="email"
+                    autoComplete="email"
+                    type="email" 
+                    value={email}
+                    onChange={ e => setEmail(e.target.value) }
+                  />
+                </label>
+                <label
+                  className="form-label d-block mt-2"
+                  htmlFor="password"
+                >
+                  <span>Contraseña</span>
+                  <input 
+                    className="form-control"
+                    name="password" 
+                    autoComplete="current-password" 
+                    type="password" 
+                    value={password}
+                    onChange={ e => setPassword(e.target.value) }
+                  />
+                </label>
                 <input 
-                  name="password" 
-                  autoComplete="current-password" 
-                  type="password" 
-                  value={password}
-                  onChange={ e => setPassword(e.target.value) }
-                />
-              </label>
-              <input 
-                type="submit" 
-                value="Ingresar" />
-            </form>
-          </>
+                  className="btn btn-success mt-2"
+                  type="submit" 
+                  value="Ingresar" />
+              </form>
+            </div>
+          </div>
         ) 
       }
     </>
