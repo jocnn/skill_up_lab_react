@@ -18,7 +18,7 @@ function App() {
             <Route index path='/' element={ <Login /> } />
             <Route path='/listado' element={ <List /> } />
             <Route path='/contacto' element={ <Contact /> } />
-            <Route path='/detalle' element={ <DetailMovie /> } />
+            <Route path='/detalle/:movieID' element={ <DetailMovie /> } />
           </Route>
         </Route>
       </Routes>
