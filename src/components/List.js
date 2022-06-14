@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 
 import Movie from "./Movie";
 
-const List = () => {
+const List = ({ addOrRemoveFavorite }) => {
 
   const [ moviesList, setMoviesList ] = useState([])
   const token = sessionStorage.getItem('token')
@@ -35,7 +35,8 @@ const List = () => {
                 return (
                   <Movie 
                     key={movie.id} 
-                    movie={movie} />
+                    movie={movie}
+                    addOrRemoveFavorite={addOrRemoveFavorite} />
                 )
               })
             }
