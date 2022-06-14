@@ -10,7 +10,7 @@ const DetailMovie = () => {
   const { movieID } = useParams()
 
   useEffect(() => {
-    axios(`https://api.themoviedb.org/3/movie/${movieID}?api_key=ef2fc8163ab84be521bd136dab63ff24&language=es-ES`)
+    axios(`https://api.themoviedb.org/3/movie/${movieID}?api_key=${process.env.REACT_APP_APIKEY}&language=es-ES`)
       .then( response => {
         const apiData = response.data
         setMovie(apiData)
@@ -45,7 +45,7 @@ const DetailMovie = () => {
                       <h5>Géneros:</h5>
                       <ul>
                         {
-                          movie.genres.map( genre => <li key={genre.id}>{genre.name}</li> )
+                          movie.genres.map( genre => ( <li key={genre.id}>{genre.name}</li> ))
                         }
                       </ul>
                     </div>

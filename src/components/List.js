@@ -12,7 +12,7 @@ const List = () => {
 
   useEffect(() => {
     const consultandoAPI = () => {
-      axios(`https://api.themoviedb.org/3/discover/movie?api_key=ef2fc8163ab84be521bd136dab63ff24&language=es-ES&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate`)
+      axios(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_APIKEY}&language=es-ES&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate`)
         .then( response => {
           const apiData = response.data
           setMoviesList(apiData.results)
