@@ -1,10 +1,10 @@
 import Header from "./Header"
 import Footer from "./Footer"
 
-const Layout = ({children}) => {
+const Layout = ({favorites, children}) => {
   return (
     <div>
-      <Header />
+      <Header favorites={favorites} />
         <div className="container">
           {children}
         </div>

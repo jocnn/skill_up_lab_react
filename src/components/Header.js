@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import Search from "./Search"
 
-const Header = () => {
+const Header = ({ favorites }) => {
   return (
     <header>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -25,6 +25,12 @@ const Header = () => {
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/listado">Listado</Link>
+              </li>
+              <li className="nav-item  d-flex align-items-center">
+                <Link className="nav-link" to="/favoritos">
+                  Favoritos 
+                  <span className="text-success"> °{favorites.length}</span>
+                </Link>
               </li>
             </ul>
           </div>
