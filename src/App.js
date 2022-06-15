@@ -11,8 +11,17 @@ import DetailMovie from "./components/DetailMovie";
 import Results from "./components/Results";
 
 import './styles/App.css'
+import Favorites from "./components/Favorites";
+import { useEffect, useState } from "react";
 
 function App() {
+
+  const [ favorites, setFavorites ] = useState([])
+
+  useEffect(() => {
+    let favoritesArray = JSON.parse(localStorage.getItem('fav_movies')) || []
+    setFavorites(favoritesArray)
+  }, [])
 
   const addOrRemoveFavorite = e => {
 
@@ -38,9 +47,11 @@ function App() {
     if (!findMovie) {
       tempCopyLocal.push(myMovie)
       localStorage.setItem('fav_movies', JSON.stringify(tempCopyLocal))
+      setFavorites(tempCopyLocal)
     } else {
       let tempMovie = tempCopyLocal.filter( oneMovie => oneMovie.id !== myMovie.id)
       localStorage.setItem('fav_movies', JSON.stringify(tempMovie))
+      setFavorites(tempMovie)
       tempMovie = null
     }
     findMovie = null
@@ -48,7 +59,7 @@ function App() {
   }
 
   return (
-    <Layout>
+    <Layout favorites={favorites} >
       <Routes>
         <Route>
           <Route path='/' >
@@ -57,6 +68,7 @@ function App() {
             <Route path='/contacto' element={ <Contact /> } />
             <Route path='/resultados' element={ <Results /> } />
             <Route path='/detalle/:movieID' element={ <DetailMovie /> } />
+            <Route path='/favoritos' element={ <Favorites favorites={favorites} addOrRemoveFavorite={addOrRemoveFavorite} /> } />
           </Route>
         </Route>
       </Routes>
